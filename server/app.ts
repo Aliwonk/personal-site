@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 app.use(cookieParser('secret'));
 app.use(express.static(path.resolve('../client/dist')));
-app.set('view engine', 'ejs');
 
 app.use('/', router);
 

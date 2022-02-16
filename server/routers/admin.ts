@@ -4,12 +4,12 @@ import * as adminMiddleware from '../middlewares/adminPage';
 const admin = express.Router();
 
 // SIGNIN
-admin.route('/signin')
+admin.route('/signIn')
 .get(adminController.signInFile)
 .post(adminController.signIn);
 
 // MIDDLEWARE
-// admin.use(adminMiddleware.checkToken);
+admin.use(adminMiddleware.checkToken);
 
 // MAIN PAGE
 admin.route('')

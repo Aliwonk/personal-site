@@ -49,18 +49,24 @@ export function Statistic() {
         return <div>Загрузка...</div>;
     } else {
         return (
-        <div className="statisticBlock">
-            {items.length}
-            {items.map(item => (
-            <div className="statistic" key={item._id}>
-                <div>{item._id}</div>
-                <div>{item.date}</div>
-                <div>{item.time}</div>
-                <button onClick={deleteStatistic}>Удалить</button>
+            <div className="statisticBlock">
+                {/* {items.length} */}
+                <div className="caption">cтатистика сайта</div>
+                <a href="/" className="btnBack">Назад в главную</a>
+                <div className="statistic">
+                    {items.map(item => (
+                    <div className="statistic__card" key={item._id}>
+                        <div className="statistic__card__el idStatistic">{item._id}</div>
+                        <div className="statistic__card__el">Дата: {item.date}</div>
+                        <div className="statistic__card__el">Время: {item.time}</div>
+                        <div className="statistic__card__el">Страна: {item.fullInfo.countryName}</div>
+                        <div className="statistic__card__el">Регион: {item.fullInfo.stateProv}</div>
+                        <div className="statistic__card__el">Город: {item.fullInfo.city}</div>
+                        <button className="statistic__card__btn" onClick={deleteStatistic}>Удалить</button>
+                    </div>
+                    ))}
+                </div>
             </div>
-            ))}
-            
-        </div>
         );
     }
 }

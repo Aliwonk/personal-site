@@ -3,6 +3,7 @@ import path from 'path';
 import * as controllerMainPage from '../controllers/mainPage';
 import { admin } from './admin';
 import { api } from './api';
+import { chat } from './chat';
  
 const router = express.Router();
 
@@ -17,6 +18,8 @@ router.route('')
 // admin route
 router.use('/admin', admin);
 
+// chat route
+router.use('/chat', chat);
 
 // api route
 router.use('/api', api);

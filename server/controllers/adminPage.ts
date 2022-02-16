@@ -17,14 +17,36 @@ export function adminFile(req: express.Request, res: express.Response) {
 };
     // end get
     
+
+    // delete
+    export function deleteStatistic(req: express.Request, res: express.Response) {
+        if(req.params.id) {
+            let id:string = req.params.id;
+            console.log(req.params.id);
+            mongo.delData('personal-site', 'statistics', 'one', {_id: new ObjectId(id)}, (err: any, result: any) => {
+                if(err) return console.log(err);
+                
+                console.log('Delete succefully');
+    
+                console.log(result);
+            });
+            res.status(200);
+            res.setHeader('Content-type', 'text/html');
+            res.end('ok');
+        };
+    };
+        // end delete
 // END MAIN PAGE
 
 
-// SIGNIN PAGE
+// AUTH PAGE
 
     // get
 export function signInFile(req: express.Request, res: express.Response) {
-    res.render(path.resolve('../client/dist/views/signIn.ejs'));
+    res.set({
+        'Cache-Control' : 'no-cache'
+    });
+    res.sendFile(path.resolve('../client/dist/adminSignIn.html'));
 };
     // end get
 
@@ -64,23 +86,4 @@ export function signIn(req: express.Request, res: express.Response) {
         // end get data mongo
 };
     // end post
-
-    // delete
-export function deleteStatistic(req: express.Request, res: express.Response) {
-    if(req.params.id) {
-        let id:string = req.params.id;
-        console.log(req.params.id);
-        mongo.delData('personal-site', 'statistics', 'one', {_id: new ObjectId(id)}, (err: any, result: any) => {
-            if(err) return console.log(err);
-            
-            console.log('Delete succefully');
-
-            console.log(result);
-        });
-        res.status(200);
-        res.setHeader('Content-type', 'text/html');
-        res.end('ok');
-    };
-};
-    // end delete
-// END SIGNIN PAGE
+// END AUTH PAGE

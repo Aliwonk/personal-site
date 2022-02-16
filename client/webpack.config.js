@@ -9,7 +9,8 @@ module.exports = {
     entry: {
         main: './js/index.jsx',
         statistic: './js/modules/statistic.js',
-        admin: './js/admin.jsx'
+        admin: './js/admin.jsx',
+        chat: './js/chat.jsx'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -55,6 +56,16 @@ module.exports = {
             filename: 'admin.html',
             template: './pages/admin.html',
             chunks: ['admin']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'adminSignIn.html',
+            template: './pages/adminSignIn.html',
+            chunks: ['']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'chat.html',
+            template: './pages/chat.html',
+            chunks: ['chat']
         }),
         new CleanWebpackPlugin()
     ]

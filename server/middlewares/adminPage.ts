@@ -10,7 +10,7 @@ const jwtKey: string = process.env.JWTKEY!;
 export function checkToken(req: express.Request, res: express.Response, next: express.NextFunction) {
     // get cookie
     if(!req.cookies.adn) {
-        return res.redirect('/admin/signin');
+        return res.redirect('/admin/signIn');
     }else{
 
         // check token
@@ -26,7 +26,7 @@ export function checkToken(req: express.Request, res: express.Response, next: ex
 
                 }else{
 
-                    res.redirect('/admin/signin');
+                    res.redirect('/admin/signIn');
 
                 }
             });
